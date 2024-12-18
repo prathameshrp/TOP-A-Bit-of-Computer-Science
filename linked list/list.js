@@ -106,12 +106,52 @@ class LinkedList{
     return stringLL;
   };
 
-  insertAt(){
+  insertAt(val, index){
+    let temp = new Node();
+    temp = this.head;
+    if(index > this.size) return "can't insert at a index bigger than list size, use append instead";
+    else if(index === this.size)
+      {
 
+        this.append(val);
+        return "added";
+      }
+    else if(index === 0)
+      {
+        this.prepend(val);
+        return "added";
+      } 
+    else{
+    while(--index)
+    {
+      temp = temp.nextNode;
+    }
+    let newNode = new Node(val);
+    newNode.nextNode = temp.nextNode;
+    temp.nextNode = newNode;
+    ++this.size;
+    return "added";
+    }
+    // return -1;
   };
 
-  removeAt(){
-
+  removeAt(index){
+    let temp = new Node();
+    temp = this.head;
+      if(index < 0 || index > this.size) return "index out of range";
+      else
+      {
+        while(--index)
+        {
+          temp = temp.nextNode;
+        }
+        let dNode = new Node();
+        dNode = temp.nextNode;
+        temp.nextNode = dNode.nextNode;
+        dNode = null;
+        --this.size;
+        return "removed";
+      }
   };
 
 }
@@ -145,7 +185,14 @@ console.log("cat is at pos: ", list.find("cat"));
 console.log("anaconda is at pos: ", list.find("anaconda"));
 console.log("Does list contains parrot?", list.contains("parrot"));
 console.log("Does list contains bird?", list.contains("bird"));
+console.log(list.insertAt("tiger", 2));
+console.log(list.insertAt("lion", 0));
+console.log(list.insertAt("bat", list.returnSize));
+console.log(list.insertAt("man", 20));
 
+console.log(list.toString());
+console.log(list.removeAt(3));
+console.log(list.toString());
 
 console.log(list.returnHead);
 console.log(list.returnTail);
