@@ -166,7 +166,7 @@ class Node{
   nextNode = null;
 }
 
-
+ 
 const list = new LinkedList(new Node());
 
 list.append("dog");
