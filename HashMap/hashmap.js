@@ -40,6 +40,7 @@ class HashMap
   
   expand()
   {
+
     const oldBuckets = this.buckets;
     this.capacity *= 2;
     this.buckets = Array.from({length:this.capacity}, ()=> []);
@@ -51,6 +52,8 @@ class HashMap
         this.set(entry.key, entry.val);
       }
     }
+
+
   }
   set(key, val)
   {
@@ -59,14 +62,15 @@ class HashMap
     const bucket = this.buckets[bucketIndex];
     // console.log(bucket);
     const e = this.entry(bucket, key);
-    
-    if(this.getLoad() > 0.75)
-      this.expand();
+ 
 
     if(e)
       e.val = val;
     else
       bucket.push({key, val});
+       
+      if(this.getLoad() > 0.75)
+        this.expand();
 
   }
 
@@ -172,4 +176,5 @@ console.log(test.entries());
 console.log(test.getLoad());
 
 test.set('moon', 'silver')
+
 console.log(test.getLoad());
