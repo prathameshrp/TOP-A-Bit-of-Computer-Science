@@ -95,7 +95,22 @@ class Tree {
   }
 
 
-  
+  find(root, val)
+  {
+    if(root === null || root.data === val)
+      return root;
+
+    if(root.data > val)
+    {
+     return this.find(root.left, val);
+    }
+
+      return this.find(root.right, val);
+   
+    
+   
+
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -131,3 +146,5 @@ prettyPrint(root);
 newBST.deleteNode(root, 67);
 
 prettyPrint(root);
+
+console.log(newBST.find(root, 3));
