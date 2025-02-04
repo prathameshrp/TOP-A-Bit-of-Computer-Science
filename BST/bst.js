@@ -198,6 +198,23 @@ class Tree {
     return this.isBalanced(root.left) && this.isBalanced(root.right); 
   
   }
+
+  rebalanceDriver(root)
+  {
+
+    if(!root) return;
+
+    this.rebalanceDriver(root.left);
+    this.arr.push(root.data);
+    this.rebalanceDriver(root.right);
+    
+  }
+  rebalance(root)
+  {
+    this.arr.splice(0,this.arr.length);
+    this.rebalanceDriver(root);
+    this.root = this.buildTree(0, this.arr.length);
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -255,3 +272,5 @@ console.log();
 console.log(newBST.height(root));
 console.log(newBST.depth(root, 2));
 console.log(newBST.isBalanced(root));
+newBST.rebalance(root);
+console.log(newBST.isBalanced(newBST.root));
