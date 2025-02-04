@@ -35,9 +35,9 @@ class Tree {
 
   insert(value) {
     let newNode = new Node(value);
-
-    let temp = new Node();
-    temp = this.root;
+    // console.log("in insert");
+    let temp = this.root;
+    // console.log(temp);
     while (temp) {
       if (temp.data > value) {
         if (temp.left) temp = temp.left;
@@ -53,6 +53,7 @@ class Tree {
         }
       }
     }
+    console.log("new node with value: ", value, " added");
   }
 
   getSuccessor(curr){
@@ -213,7 +214,7 @@ class Tree {
   {
     this.arr.splice(0,this.arr.length);
     this.rebalanceDriver(root);
-    this.root = this.buildTree(0, this.arr.length);
+    this.root = this.buildTree(0, this.arr.length-1);
   }
 }
 
