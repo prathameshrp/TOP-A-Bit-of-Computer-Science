@@ -166,6 +166,14 @@ class Tree {
       callback(root);
     
   }
+
+  height(root)
+  {
+    if(!root) return -1;
+
+    return 1+ Math.max(this.height(root.left), this.height(root.right));
+  }
+  
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -220,3 +228,4 @@ newBST.preorder(root, printNode);
 console.log();
 newBST.postorder(root, printNode);
 console.log();
+console.log(newBST.height(root));
