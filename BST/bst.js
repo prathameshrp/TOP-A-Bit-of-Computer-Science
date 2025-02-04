@@ -63,7 +63,7 @@ class Tree {
     return curr;
   }
 
-  deleteNode(root, val)
+  deleteNode(root, val) 
   {
     if(root == null)
       return root;
@@ -80,6 +80,7 @@ class Tree {
     else
     {
       if(root.left === null)
+        
         return root.right;
 
       else if(root.right === null)
@@ -107,9 +108,63 @@ class Tree {
 
       return this.find(root.right, val);
    
-    
-   
+  }
 
+  levelorder(callback)
+  {
+    if(typeof callback === undefined || typeof callback !== 'function')
+    {
+      throw new Error('A callback function must be provided');
+    }
+
+    const queue = [];
+    queue.push(this.root);
+    // let temp = new Node();
+    // temp = this.root;
+
+    while(queue.length)
+    {
+      const curr = queue.shift();  
+      // console.log(curr);
+      callback(curr);
+      if(curr.left)
+        queue.push(curr.left);
+      if(curr.right)
+        queue.push(curr.right);
+    }
+    console.log('\n'); 
+  }
+
+  inorder(root, callback)
+  {
+    if(!root) return;
+    
+    
+      this.inorder(root.left, callback);
+      callback(root);
+      this.inorder(root.right, callback);
+    
+  }
+
+  preorder(root, callback)
+  {
+    if(!root) return;
+    
+      callback(root);
+      this.inorder(root.left, callback);
+      this.inorder(root.right, callback);
+    
+  }  
+  
+  postorder(root, callback)
+  {
+    if(!root) return;
+    
+    
+      this.inorder(root.left, callback);
+      this.inorder(root.right, callback);
+      callback(root);
+    
   }
 }
 
@@ -148,3 +203,20 @@ newBST.deleteNode(root, 67);
 prettyPrint(root);
 
 console.log(newBST.find(root, 3));
+
+function printNode(currNode) {
+  process.stdout.write(currNode.data + '->');
+  // console
+}
+
+try {
+  newBST.levelorder(printNode);
+} catch (error) {
+  console.log(error);
+}
+newBST.inorder(root, printNode);
+console.log();
+newBST.preorder(root, printNode);
+console.log();
+newBST.postorder(root, printNode);
+console.log();
