@@ -230,47 +230,53 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-let test = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+// let test = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
-uniqueT = [...new Set(test)];
-uniqueT.sort((a, b) => a - b);
-// console.log(uniqueT);
-const newBST = new Tree(uniqueT);
+// uniqueT = [...new Set(test)];
+// uniqueT.sort((a, b) => a - b);
+// // console.log(uniqueT);
+// const newBST = new Tree(uniqueT);
 
-let root = newBST.buildTree(0, uniqueT.length);
+// let root = newBST.buildTree(0, uniqueT.length);
 
-// console.log(root);
+// // console.log(root);
+
+// // prettyPrint(root);
+
+// newBST.insert(2);
 
 // prettyPrint(root);
 
-newBST.insert(2);
+// newBST.deleteNode(root, 67);
 
-prettyPrint(root);
+// prettyPrint(root);
 
-newBST.deleteNode(root, 67);
-
-prettyPrint(root);
-
-console.log(newBST.find(root, 3));
+// console.log(newBST.find(root, 3));
 
 function printNode(currNode) {
   process.stdout.write(currNode.data + '->');
   // console
 }
 
-try {
-  newBST.levelorder(printNode);
-} catch (error) {
-  console.log(error);
-}
-newBST.inorder(root, printNode);
-console.log();
-newBST.preorder(root, printNode);
-console.log();
-newBST.postorder(root, printNode);
-console.log();
-console.log(newBST.height(root));
-console.log(newBST.depth(root, 2));
-console.log(newBST.isBalanced(root));
-newBST.rebalance(root);
-console.log(newBST.isBalanced(newBST.root));
+// try {
+//   newBST.levelorder(printNode);
+// } catch (error) {
+//   console.log(error);
+// }
+// newBST.inorder(root, printNode);
+// console.log();
+// newBST.preorder(root, printNode);
+// console.log();
+// newBST.postorder(root, printNode);
+// console.log();
+// console.log(newBST.height(root));
+// console.log(newBST.depth(root, 2));
+// console.log(newBST.isBalanced(root));
+// newBST.rebalance(root);
+// console.log(newBST.isBalanced(newBST.root));
+
+module.exports = {
+  Tree,
+  prettyPrint,
+  printNode
+};
