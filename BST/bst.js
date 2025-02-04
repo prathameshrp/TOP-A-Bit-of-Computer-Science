@@ -173,7 +173,20 @@ class Tree {
 
     return 1+ Math.max(this.height(root.left), this.height(root.right));
   }
-  
+
+  depth(root, val)
+  {
+    if(root === null || root.data === val)
+      return 0;
+
+    if(root.data > val)
+    {
+     return 1+this.depth(root.left, val);
+    }
+
+      return 1+ this.depth(root.right, val); 
+  }
+
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -229,3 +242,4 @@ console.log();
 newBST.postorder(root, printNode);
 console.log();
 console.log(newBST.height(root));
+console.log(newBST.depth(root, 2));
