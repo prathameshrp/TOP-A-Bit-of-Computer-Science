@@ -187,6 +187,17 @@ class Tree {
       return 1+ this.depth(root.right, val); 
   }
 
+  isBalanced(root)
+  {
+    if(!root)
+      return true;
+    let h = this.height(root.left) - this.height(root.right);
+    if(!(Math.abs(h) <= 1))
+      return false;
+
+    return this.isBalanced(root.left) && this.isBalanced(root.right); 
+  
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -243,3 +254,4 @@ newBST.postorder(root, printNode);
 console.log();
 console.log(newBST.height(root));
 console.log(newBST.depth(root, 2));
+console.log(newBST.isBalanced(root));
