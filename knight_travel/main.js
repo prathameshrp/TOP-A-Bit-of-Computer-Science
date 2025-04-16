@@ -32,9 +32,6 @@ while(current[0] !== destination[0] || current[1] !== destination[1])
    pos.forEach((entry)=>{
     if(entry[0] >= 0 && entry[0] < 8 && entry[1] >=0 && entry[1] < 8 && !visited[entry[0]][entry[1]])
     {
-      
-
-     
         visited[entry[0]][entry[1]] = 1;
         queue.push([...entry, current]);
     }
